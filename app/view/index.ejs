@@ -3,32 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title || 'LibraryHub' %> - Sistem Manajemen Perpustakaan</title>
+    <title><%= title || 'LibraryHub' %></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
         body {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .navbar {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-        .navbar-brand {
-            font-weight: bold;
-            font-size: 1.5rem;
-            color: #2c3e50 !important;
-        }
-        .nav-link {
-            color: #2c3e50 !important;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-        .nav-link:hover {
-            color: #3498db !important;
         }
         .content-card {
             background: white;
@@ -46,134 +31,85 @@
             margin: 1rem 0;
             transition: transform 0.3s;
         }
-        .stats-card:hover {
-            transform: translateY(-10px);
-        }
-        .stats-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        .stats-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin: 0.5rem 0;
-        }
+        .stats-card:hover { transform: translateY(-10px); }
         .hero-section {
             color: white;
             padding: 3rem 0;
             text-align: center;
         }
-        .hero-section h1 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="/">
-                <i class="bi bi-book"></i> LibraryHub
-            </a>
+            <a class="navbar-brand" href="/"><i class="bi bi-book"></i> LibraryHub</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">
-                            <i class="bi bi-house-door"></i> Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/transaksi">
-                            <i class="bi bi-arrow-left-right"></i> Transaksi
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/buku">
-                            <i class="bi bi-book-half"></i> Buku
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/mahasiswa">
-                            <i class="bi bi-people"></i> Mahasiswa
-                        </a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/"><i class="bi bi-house-door"></i> Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/transaksi"><i class="bi bi-arrow-left-right"></i> Transaksi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/buku"><i class="bi bi-book-half"></i> Buku</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/mahasiswa"><i class="bi bi-people"></i> Mahasiswa</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
             <h1>📚 <%= title %></h1>
-            <p>Sistem Manajemen Perpustakaan Kampus - Kelompok F7</p>
+            <p>Sistem Manajemen Perpustakaan - Kelompok F7</p>
         </div>
     </section>
 
-    <!-- Main Content -->
     <div class="container">
         <% if (typeof stats !== 'undefined' && stats) { %>
-            <!-- Dashboard Stats -->
             <div class="row">
                 <div class="col-md-3">
                     <div class="stats-card">
-                        <div class="stats-icon text-primary">
-                            <i class="bi bi-book-half"></i>
-                        </div>
-                        <div class="stats-number text-primary"><%= stats.total_buku %></div>
-                        <div class="text-muted">Total Buku</div>
+                        <div class="text-primary" style="font-size: 3rem;"><i class="bi bi-book-half"></i></div>
+                        <h2 class="text-primary"><%= stats.total_buku %></h2>
+                        <p class="text-muted">Total Buku</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="stats-card">
-                        <div class="stats-icon text-success">
-                            <i class="bi bi-people"></i>
-                        </div>
-                        <div class="stats-number text-success"><%= stats.total_mahasiswa %></div>
-                        <div class="text-muted">Mahasiswa</div>
+                        <div class="text-success" style="font-size: 3rem;"><i class="bi bi-people"></i></div>
+                        <h2 class="text-success"><%= stats.total_mahasiswa %></h2>
+                        <p class="text-muted">Mahasiswa</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="stats-card">
-                        <div class="stats-icon text-warning">
-                            <i class="bi bi-clock-history"></i>
-                        </div>
-                        <div class="stats-number text-warning"><%= stats.sedang_dipinjam %></div>
-                        <div class="text-muted">Dipinjam</div>
+                        <div class="text-warning" style="font-size: 3rem;"><i class="bi bi-clock-history"></i></div>
+                        <h2 class="text-warning"><%= stats.sedang_dipinjam %></h2>
+                        <p class="text-muted">Dipinjam</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="stats-card">
-                        <div class="stats-icon text-info">
-                            <i class="bi bi-check-circle"></i>
-                        </div>
-                        <div class="stats-number text-info"><%= stats.sudah_kembali %></div>
-                        <div class="text-muted">Dikembalikan</div>
+                        <div class="text-info" style="font-size: 3rem;"><i class="bi bi-check-circle"></i></div>
+                        <h2 class="text-info"><%= stats.sudah_kembali %></h2>
+                        <p class="text-muted">Dikembalikan</p>
                     </div>
                 </div>
             </div>
         <% } %>
 
         <% if (typeof buku !== 'undefined') { %>
-            <!-- Daftar Buku -->
             <div class="content-card">
-                <h3><i class="bi bi-book-half"></i> Daftar Buku</h3>
-                <hr>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3><i class="bi bi-book-half"></i> Daftar Buku</h3>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBukuModal">
+                        <i class="bi bi-plus-circle"></i> Tambah Buku
+                    </button>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead class="table-light">
-                            <tr>
-                                <th>No</th>
-                                <th>Judul</th>
-                                <th>Pengarang</th>
-                                <th>ISBN</th>
-                                <th>Stok</th>
-                            </tr>
+                            <tr><th>No</th><th>Judul</th><th>Pengarang</th><th>ISBN</th><th>Stok</th><th>Aksi</th></tr>
                         </thead>
                         <tbody>
                             <% buku.forEach((item, index) => { %>
@@ -181,31 +117,108 @@
                                 <td><%= index + 1 %></td>
                                 <td><%= item.judul %></td>
                                 <td><%= item.pengarang %></td>
-                                <td><%= item.isbn %></td>
+                                <td><%= item.isbn || '-' %></td>
                                 <td><span class="badge bg-<%= item.stok > 0 ? 'success' : 'danger' %>"><%= item.stok %></span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning" onclick='editBuku(<%= item.id_buku %>, `<%= item.judul %>`, `<%= item.pengarang %>`, `<%= item.isbn || "" %>`, <%= item.stok %>)'>
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <a href="/buku/delete/<%= item.id_buku %>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </td>
                             </tr>
                             <% }); %>
                         </tbody>
                     </table>
                 </div>
             </div>
+
+            <!-- Modal Tambah Buku -->
+            <div class="modal fade" id="addBukuModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary text-white">
+                            <h5 class="modal-title">Tambah Buku Baru</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form method="POST" action="/buku/add">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Judul Buku *</label>
+                                    <input type="text" class="form-control" name="judul" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Pengarang *</label>
+                                    <input type="text" class="form-control" name="pengarang" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">ISBN</label>
+                                    <input type="text" class="form-control" name="isbn" placeholder="978-XXXXXXXXXX">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Stok *</label>
+                                    <input type="number" class="form-control" name="stok" value="1" min="0" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Edit Buku -->
+            <div class="modal fade" id="editBukuModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-warning">
+                            <h5 class="modal-title">Edit Buku</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form method="POST" id="editBukuForm">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Judul Buku *</label>
+                                    <input type="text" class="form-control" name="judul" id="edit_judul" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Pengarang *</label>
+                                    <input type="text" class="form-control" name="pengarang" id="edit_pengarang" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">ISBN</label>
+                                    <input type="text" class="form-control" name="isbn" id="edit_isbn">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Stok *</label>
+                                    <input type="number" class="form-control" name="stok" id="edit_stok" min="0" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-warning">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         <% } %>
 
         <% if (typeof mahasiswa !== 'undefined') { %>
-            <!-- Daftar Mahasiswa -->
             <div class="content-card">
-                <h3><i class="bi bi-people"></i> Daftar Mahasiswa</h3>
-                <hr>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3><i class="bi bi-people"></i> Daftar Mahasiswa</h3>
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addMahasiswaModal">
+                        <i class="bi bi-plus-circle"></i> Tambah Mahasiswa
+                    </button>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead class="table-light">
-                            <tr>
-                                <th>No</th>
-                                <th>NIM</th>
-                                <th>Nama</th>
-                                <th>Email</th>
-                                <th>No. Telepon</th>
-                            </tr>
+                            <tr><th>No</th><th>NIM</th><th>Nama</th><th>Email</th><th>No. Telepon</th><th>Aksi</th></tr>
                         </thead>
                         <tbody>
                             <% mahasiswa.forEach((item, index) => { %>
@@ -215,31 +228,105 @@
                                 <td><%= item.nama_mahasiswa %></td>
                                 <td><%= item.email || '-' %></td>
                                 <td><%= item.no_telepon || '-' %></td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning" onclick='editMahasiswa(<%= item.id_mahasiswa %>, `<%= item.nim %>`, `<%= item.nama_mahasiswa %>`, `<%= item.email || "" %>`, `<%= item.no_telepon || "" %>`)'>
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <a href="/mahasiswa/delete/<%= item.id_mahasiswa %>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </td>
                             </tr>
                             <% }); %>
                         </tbody>
                     </table>
                 </div>
             </div>
+
+            <!-- Modal Tambah & Edit Mahasiswa (mirip dengan Buku) -->
+            <div class="modal fade" id="addMahasiswaModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success text-white">
+                            <h5 class="modal-title">Tambah Mahasiswa</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form method="POST" action="/mahasiswa/add">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label class="form-label">NIM *</label>
+                                    <input type="text" class="form-control" name="nim" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Nama Lengkap *</label>
+                                    <input type="text" class="form-control" name="nama_mahasiswa" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" name="email">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">No. Telepon</label>
+                                    <input type="text" class="form-control" name="no_telepon">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-success">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="editMahasiswaModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-warning">
+                            <h5 class="modal-title">Edit Mahasiswa</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form method="POST" id="editMahasiswaForm">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label class="form-label">NIM *</label>
+                                    <input type="text" class="form-control" name="nim" id="edit_mhs_nim" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Nama Lengkap *</label>
+                                    <input type="text" class="form-control" name="nama_mahasiswa" id="edit_mhs_nama" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" name="email" id="edit_mhs_email">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">No. Telepon</label>
+                                    <input type="text" class="form-control" name="no_telepon" id="edit_mhs_telp">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-warning">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         <% } %>
 
         <% if (typeof transaksi !== 'undefined') { %>
-            <!-- Daftar Transaksi -->
             <div class="content-card">
-                <h3><i class="bi bi-arrow-left-right"></i> Daftar Transaksi Peminjaman</h3>
-                <hr>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3><i class="bi bi-arrow-left-right"></i> Daftar Transaksi</h3>
+                    <button class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#addTransaksiModal">
+                        <i class="bi bi-plus-circle"></i> Tambah Transaksi
+                    </button>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead class="table-light">
-                            <tr>
-                                <th>No</th>
-                                <th>NIM</th>
-                                <th>Mahasiswa</th>
-                                <th>Buku</th>
-                                <th>Tanggal Pinjam</th>
-                                <th>Jatuh Tempo</th>
-                                <th>Status</th>
-                            </tr>
+                            <tr><th>No</th><th>NIM</th><th>Mahasiswa</th><th>Buku</th><th>Tgl Pinjam</th><th>Jatuh Tempo</th><th>Status</th><th>Aksi</th></tr>
                         </thead>
                         <tbody>
                             <% transaksi.forEach((item, index) => { %>
@@ -250,10 +337,14 @@
                                 <td><%= item.judul_buku %></td>
                                 <td><%= new Date(item.tanggal_pinjam).toLocaleDateString('id-ID') %></td>
                                 <td><%= new Date(item.tanggal_jatuh_tempo).toLocaleDateString('id-ID') %></td>
+                                <td><span class="badge bg-<%= item.status === 'dipinjam' ? 'warning' : 'success' %>"><%= item.status %></span></td>
                                 <td>
-                                    <span class="badge bg-<%= item.status === 'dipinjam' ? 'warning' : 'success' %>">
-                                        <%= item.status %>
-                                    </span>
+                                    <button class="btn btn-sm btn-warning" onclick='editTransaksi(<%= item.id_transaksi %>, "<%= item.tanggal_pinjam.toISOString().split("T")[0] %>", "<%= item.tanggal_jatuh_tempo.toISOString().split("T")[0] %>", "<%= item.tanggal_kembali ? item.tanggal_kembali.toISOString().split("T")[0] : "" %>", "<%= item.status %>", <%= item.denda || 0 %>)'>
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <a href="/transaksi/delete/<%= item.id_transaksi %>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
                                 </td>
                             </tr>
                             <% }); %>
@@ -261,12 +352,142 @@
                     </table>
                 </div>
             </div>
+
+            <!-- Modal Tambah Transaksi -->
+            <div class="modal fade" id="addTransaksiModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title">Tambah Transaksi</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form method="POST" action="/transaksi/add">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Mahasiswa *</label>
+                                    <select class="form-select" name="id_mahasiswa" required>
+                                        <option value="">-- Pilih --</option>
+                                        <% if (typeof mahasiswa !== 'undefined') { mahasiswa.forEach(m => { %>
+                                            <option value="<%= m.id_mahasiswa %>"><%= m.nim %> - <%= m.nama_mahasiswa %></option>
+                                        <% }); } %>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Buku *</label>
+                                    <select class="form-select" name="id_buku" required>
+                                        <option value="">-- Pilih --</option>
+                                        <% if (typeof buku !== 'undefined') { buku.forEach(b => { %>
+                                            <option value="<%= b.id_buku %>"><%= b.judul %> (Stok: <%= b.stok %>)</option>
+                                        <% }); } %>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Tgl Pinjam *</label>
+                                    <input type="date" class="form-control" name="tanggal_pinjam" id="tgl_pinjam" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Jatuh Tempo *</label>
+                                    <input type="date" class="form-control" name="tanggal_jatuh_tempo" id="tgl_tempo" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-info text-white">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Edit Transaksi -->
+            <div class="modal fade" id="editTransaksiModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-warning">
+                            <h5 class="modal-title">Edit Transaksi</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form method="POST" id="editTransaksiForm">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Tgl Pinjam *</label>
+                                    <input type="date" class="form-control" name="tanggal_pinjam" id="edit_tgl_pinjam" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Jatuh Tempo *</label>
+                                    <input type="date" class="form-control" name="tanggal_jatuh_tempo" id="edit_tgl_tempo" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Tgl Kembali</label>
+                                    <input type="date" class="form-control" name="tanggal_kembali" id="edit_tgl_kembali">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Status *</label>
+                                    <select class="form-select" name="status" id="edit_status" required>
+                                        <option value="dipinjam">Dipinjam</option>
+                                        <option value="dikembalikan">Dikembalikan</option>
+                                        <option value="terlambat">Terlambat</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Denda (Rp)</label>
+                                    <input type="number" class="form-control" name="denda" id="edit_denda" min="0" value="0">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-warning">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         <% } %>
     </div>
 
-    <!-- Footer -->
     <%- include('partials/footer') %>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            const tglPinjam = document.getElementById('tgl_pinjam');
+            const tglTempo = document.getElementById('tgl_tempo');
+            if (tglPinjam) tglPinjam.value = today;
+            if (tglTempo) {
+                const weekLater = new Date();
+                weekLater.setDate(weekLater.getDate() + 7);
+                tglTempo.value = weekLater.toISOString().split('T')[0];
+            }
+        });
+
+        function editBuku(id, judul, pengarang, isbn, stok) {
+            document.getElementById('editBukuForm').action = '/buku/edit/' + id;
+            document.getElementById('edit_judul').value = judul;
+            document.getElementById('edit_pengarang').value = pengarang;
+            document.getElementById('edit_isbn').value = isbn;
+            document.getElementById('edit_stok').value = stok;
+            new bootstrap.Modal(document.getElementById('editBukuModal')).show();
+        }
+
+        function editMahasiswa(id, nim, nama, email, telp) {
+            document.getElementById('editMahasiswaForm').action = '/mahasiswa/edit/' + id;
+            document.getElementById('edit_mhs_nim').value = nim;
+            document.getElementById('edit_mhs_nama').value = nama;
+            document.getElementById('edit_mhs_email').value = email;
+            document.getElementById('edit_mhs_telp').value = telp;
+            new bootstrap.Modal(document.getElementById('editMahasiswaModal')).show();
+        }
+
+        function editTransaksi(id, tglPinjam, tglTempo, tglKembali, status, denda) {
+            document.getElementById('editTransaksiForm').action = '/transaksi/edit/' + id;
+            document.getElementById('edit_tgl_pinjam').value = tglPinjam;
+            document.getElementById('edit_tgl_tempo').value = tglTempo;
+            document.getElementById('edit_tgl_kembali').value = tglKembali;
+            document.getElementById('edit_status').value = status;
+            document.getElementById('edit_denda').value = denda;
+            new bootstrap.Modal(document.getElementById('editTransaksiModal')).show();
+        }
+    </script>
 </body>
 </html>
